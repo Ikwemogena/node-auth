@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import router from './router';
 
 const app = express();
 
@@ -27,3 +28,5 @@ const MONGO_URL = 'mongodb+srv://pulley06arc:YACwAEGTAHeyhtCM@backenddb.oaeyx5c.
 mongoose.Promise = Promise
 mongoose.connect(MONGO_URL)
 mongoose.connection.on('error', (err: Error) => console.error(err))
+
+app.use('/', router())
