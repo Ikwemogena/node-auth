@@ -29,7 +29,7 @@ export const login = async (req: express.Request, res: express.Response) => {
 
         await user.save()
 
-        res.cookie('sessionToken', user.authentication.sessionToken, { domain: 'localhost', path: '/' })
+        res.cookie('sessionToken', user.authentication.sessionToken, { domain: 'localhost', path: '/', expires: new Date(Date.now() + 1000 * 60 * 60) })
 
         return res.status(200).json(user).end();
     } catch (error) {
